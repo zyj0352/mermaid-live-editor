@@ -1,16 +1,17 @@
-import mermaid from 'mermaid';
-import type { MermaidConfig, RenderResult } from 'mermaid';
+graph LR
 
-export const render = async (
-  config: MermaidConfig,
-  code: string,
-  id: string
-): Promise<RenderResult> => {
-  // Should be able to call this multiple times without any issues.
-  mermaid.initialize(config);
-  return await mermaid.render(id, code);
-};
+A(患者) -->|1. 就诊登记| B(挂号台)
 
-export const parse = async (code: string): Promise<unknown> => {
-  return await mermaid.parse(code);
-};
+B -->|2. 挂号确认| C(等待区)
+
+C -->|3. 就诊呼叫| D(医生)
+
+D -->|4. 病情询问| E(患者)
+
+E -->|5. 检查/诊断| D
+
+D -->|6. 开具药物处方| F(药房)
+
+F -->|7. 取药| G(患者)
+
+G -->|8. 结束就诊| H(出口)的
