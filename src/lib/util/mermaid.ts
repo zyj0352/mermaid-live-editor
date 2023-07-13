@@ -1,16 +1,35 @@
-import mermaid from 'mermaid';
-import type { MermaidConfig, RenderResult } from 'mermaid';
-
-export const render = async (
-  config: MermaidConfig,
-  code: string,
-  id: string
-): Promise<RenderResult> => {
-  // Should be able to call this multiple times without any issues.
-  mermaid.initialize(config);
-  return await mermaid.render(id, code);
-};
-
-export const parse = async (code: string): Promise<unknown> => {
-  return await mermaid.parse(code);
-};
+graph TB
+  subgraph 上一回原文提要
+    贾元春晋封<br>凤藻宫尚书,<br>加封贤德妃
+  end
+  
+  subgraph 本回原文提要
+    A1(秦钟病危)
+    A2(宝玉闻讯前往看望)
+    A3(秦钟魂魄与鬼判对话)
+    A4(都判听说宝玉来了,<br>赶紧让秦钟回阳见宝玉)
+    A5(秦钟嘱托宝玉后不久去世)
+  end
+  
+  subgraph 本回主要内容
+    B1(秦钟病重)
+    B2(宝玉得知秦钟病危,<br>前往探望)
+    B3(秦钟魂魄与阴间鬼判辩论,<br>要求回阳一趟)
+    B4(鬼判听说宝玉来看望,<br>放秦钟回阳一会)  
+    B5(秦钟嘱咐宝玉要好好读书,<br>不要虚度时光)
+    B6(秦钟终于去世)
+  end
+  
+  A1-->B1
+  A2-->B2
+  A3-->B3
+  A4-->B4
+  A5-->B5
+  B5-->B6
+  
+  B1--秦钟病重
+  B2--宝玉探望
+  B3--魂魄与鬼判对话
+  B4--回阳见宝玉
+  B5--嘱咐读书
+  B6--秦钟去世
